@@ -214,37 +214,66 @@ what replaced it.
 
 ## Status
 
-Honest state, not intent. Verified against the repository on 17 August 2026.
+Honest state, not intent. Every row verified against the repository.
 
-| Module | Deck read | Labs written | Deck revised | Facilitator deck | Assessment |
+| Module | Labs | Deck revised | Facilitator | Assessment | Module README |
 |---|---|---|---|---|---|
-| 1 Fundamentals | Yes | Yes, Ex 1 to 3. Ex 2 authored in-house | Revised PPTX and changelog produced, not committed | Not started | Original read. Rewrite pending recalibration |
-| 2 Claude Code | Yes | Yes, Ex 4 to 6 | Revised PPTX and changelog produced, not committed | Not started | Original read. Rewrite pending recalibration |
-| 3 Debugging and reviews | Yes | Yes, Ex 7 to 9 | Revised PPTX and changelog produced, not committed | Not started | Original read. Rewrite pending recalibration |
-| 4 Claude API | Yes | Yes, Ex 10 to 12 | Revised PPTX and changelog produced, not committed | Not started | Original read. Rewrite blocked: 40 percent of it is untaught |
-| 5 Advanced and capstone | Yes | Yes, Ex 13 to 15 | Revised PPTX and changelog produced, not committed | Not started | Original read. Rewrite pending recalibration |
-| Course intro | Not applicable | Not applicable | Not authored | Not started | Not applicable |
+| 1 Fundamentals | Ex 1 to 3, Ex 2 authored in-house | 27 slides, 4 edits, 2 added | Script and deck | 10 questions, key, changelog | Yes |
+| 2 Claude Code | Ex 4 to 6 | 27 slides, 3 edits, 2 added | Script and deck | 10 questions, key, changelog | Yes |
+| 3 Debugging and reviews | Ex 7 to 9 | 26 slides, 2 edits, 1 added | Script and deck | 10 questions, key, changelog | Yes |
+| 4 Claude API | Ex 10 to 12 | 28 slides, 5 edits, 3 added | Script and deck | 10 questions, key, changelog | Yes |
+| 5 Advanced and capstone | Ex 13 to 15 | 26 slides, 3 edits, 2 added | Script and deck | 10 questions, key, changelog | Yes |
+| Course intro | Not applicable | Not authored | Not authored | Not applicable | Not applicable |
 
-Starter code status, all verified by running it rather than reading it:
+All 15 lab documents exist as markdown and as generated DOCX. All five vendor decks
+are preserved unmodified under each module's `01-deck/original/`.
+
+Assessment answer distribution, the main defect in the vendor set, now checked
+mechanically rather than by eye:
+
+| Module | a | b | c | d | Core / Stretch |
+|---|---|---|---|---|---|
+| 1 | 2 | 2 | 3 | 3 | 7 / 3 |
+| 2 | 3 | 2 | 3 | 2 | 7 / 3 |
+| 3 | 2 | 3 | 3 | 2 | 7 / 3 |
+| 4 | 3 | 2 | 3 | 2 | 7 / 3 |
+| 5 | 3 | 2 | 2 | 3 | 7 / 3 |
+
+Starter code, all verified by running it rather than reading it:
 
 | Artefact | Expected result | Verified |
 |---|---|---|
-| Exercise 7 test suite | 3 failed | Yes, 17 August 2026 |
-| Exercise 8 baseline | 24326 matches, about 2 to 3 seconds | Yes, 2.4 s on the build machine |
-| Exercise 15 skeleton suite | 3 passed, 1 failed, `assert 502 == 200` | Yes, 17 August 2026 |
+| Exercise 1 snippet | `[10.0, 15.0, 20.0]` for four readings | Yes |
+| Exercise 7 test suite | 3 failed, two `KeyError` and one assertion | Yes |
+| Exercise 7 threshold range | 1 fails, 2, 5 and 7 pass, 8 fails, so 2 to 7 inclusive | Yes, by running the suite against each |
+| Exercise 8 baseline | 24326 matches, about 2 to 3 seconds | Yes, 2.23 s on the build machine |
+| Exercise 8 set-based trap | Returns 10382, so faster and wrong | Yes |
+| Exercise 15 skeleton suite | 3 passed, 1 failed, `assert 502 == 200` | Yes |
 
 ### Outstanding work, roughly in order
 
-1. Commit the revised decks and the slide-by-slide changelogs under each module's
-   `01-deck/`, once the vendor confirms which format is authoritative.
-2. Archive each vendor lab PDF and assessment PDF into the `vendor-original/` and
-   `04-assessment/original/` folders `CLAUDE.md` specifies.
-3. Author the course intro, including the environment requirements warning for
-   Modules 2 and 4.
-4. Recalibrate the five assessments and write answer keys with rationale, since
-   there is no live debrief to carry the explanation.
-5. Build the recording deck and recording script per module in `02-facilitator/`.
-6. Write each module's top-level `README.md`.
-7. Fix the key-prefix print in `verify_key.py`, which contradicts both decision 18
-   and the Exercise 10 lab text.
-8. Resolve `docs/open-questions-for-vendor.md`.
+1. **Push to GitHub.** The repository is committed locally with full history but the
+   remote refuses the push, because `zarantechClaude/claude-dev-demo` is not in the
+   session's authorised repository set. Nothing is lost, and publishing is one push
+   once that is granted.
+2. **Archive the vendor PDFs.** Every `vendor-original/` and `04-assessment/original/`
+   folder carries a README naming exactly which vendor file belongs in it. The files
+   themselves are not in the repository yet: device file access expired during the
+   build. Their contents were read through the Claude Project, so the rewrites are
+   based on the real documents.
+3. **Author the course intro**, about 12 minutes, including the environment
+   requirements warning for Modules 2 and 4. This is the largest remaining gap.
+4. **Decide the deck round trip** with the vendor content team. Question 10 in
+   `docs/open-questions-for-vendor.md`. Until it is answered, the revised PPTX files
+   and the Google Slides masters can diverge.
+5. **Consolidate the Module 5 evaluation slides.** The new marking-thresholds slide
+   was inserted alongside the original adjectives-only slides rather than replacing
+   them, so the on-screen order is adjectives, thresholds, adjectives.
+6. Resolve the rest of `docs/open-questions-for-vendor.md`.
+
+Items closed during this build, recorded so they are not reopened: the revised decks
+and changelogs are committed; the facilitator scripts and decks exist for all five
+modules; all five assessments are rewritten with keys and changelogs; every module
+has a content-team README; and the `verify_key.py` key-prefix print is fixed, so it
+now reports presence and length only, matching what both the lab and the register
+claim.
