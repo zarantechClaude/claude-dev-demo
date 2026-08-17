@@ -63,17 +63,17 @@ under 'Added' refer to the **revised** deck.
 
 **Was:**
 
-> Review three different proposed architectures for integrating the Claude API securely.
+> Review three different proposed architectures for integrating the Claude API securely. (plus four bullets referring to 'the suggested architectures' and 'each proposed solution')
 
 **Now:** the bullet block was rewritten to:
 
 > - Compare your Exercise 11 CLI against the supplied reference implementation.
-> - Analyze the provided code snippets for potential prompt injection vulnerability risks.
+> - Analyze your own code for prompt injection risk in the untrusted input path.
 > - Examine the context management strategy you chose in Exercise 12, and its cost.
 > - Identify flaws in how your own design handles session state persistence.
-> - Prepare notes on efficiency, security, and scalability for your capstone design.
+> - Prepare notes on efficiency, security and scalability for your capstone design.
 
-**Why:** The activity asked learners to review three sample architectures that were never supplied with the deck. Rewritten to use artefacts that exist: the Exercise 11 reference implementation and the learner's own capstone design.
+**Why:** The activity asked learners to review three sample architectures that were never supplied with the deck. Rewritten to use artefacts that exist: the Exercise 11 reference implementation and the learner's own capstone design. Each bullet on this slide is a separate shape, so all five are replaced.
 
 ### Slide 23
 

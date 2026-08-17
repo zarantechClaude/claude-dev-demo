@@ -76,7 +76,7 @@ Module 2. Twelve defects, and one designed trap that matters more than any of th
 | # | Defect |
 |---|---|
 | 1 | Function named `r`, single-letter variables throughout |
-| 2 | Six near-identical validation blocks, all returning the same useless `{"err":"bad"}` |
+| 2 | Seven near-identical validation blocks, all returning the same useless `{"err":"bad"}`. Verified by counting the file, because two earlier documents disagreed on the number. |
 | 3 | Every failure returns 400 with no indication of which field failed |
 | 4 | Parsing, validation, hashing and persistence all in one function |
 | 5 | Connection never closed, `debug=True` on the app |

@@ -51,12 +51,17 @@ The lab and script design deliberately never echoes key material:
    a log aggregator is still a leaked prefix, and it is enough to correlate with a
    full key somewhere else.
 
-**Open item, fix before recording Module 4.** The shipped `verify_key.py` prints a
-seven-character prefix:
+This was not always true. An earlier version of the script printed a seven-character
+prefix, and both the lab text and the defect register asserted otherwise, so the
+trainer would have read a false statement on camera. The script was corrected. It now
+prints only:
 
 ```python
-print("Key loaded, length {}, starts with {}...".format(len(key), key[:7]))
+print("Key loaded. Length {} characters.".format(len(key)))
 ```
+
+It also warns if the key has stray whitespace or is wrapped in quotes in `.env`,
+which are the two most common causes of a key that "loaded" but does not work.
 
 Seven characters is the non-secret vendor prefix rather than the secret portion, so
 the practical exposure is low. The problem is that it contradicts the lab narration
@@ -183,7 +188,7 @@ that go stale or leak, so check them specifically rather than rewatching everyth
 | `verify_key.py` output | Exercise 10 Step 6 | Confirm no prefix is printed once the one-line fix is applied. This is the frame that proves the practice you are teaching |
 | The raw `curl` block | Exercise 10 Step 8 | Confirm the header names and the endpoint still match the documentation, and that no expanded key value appears in the output |
 | Any model picker in the Claude app | Exercises 1, 2, 3, 8, 9, 13, 14 | Names current versions. Dates fastest of anything on screen |
-| Slides that name a model version | Module 1 slide 8 and Module 4 slide 6 in the vendor decks | These two were the known offenders. Confirm the revised decks removed them and that no new slide reintroduced one |
+| Slides that name a model version | Vendor numbering: Module 1 slide 8, Module 4 slide 6. In the REVISED decks these are Module 1 slide 10 and Module 4 slide 7, because added slides shifted the numbering | These two were the known offenders. Confirm the revised decks removed them and that no new slide reintroduced one |
 | The Claude sidebar in any browser lab | Exercises 1, 2, 3, 8, 9, 13, 14 | A profile that was clean at first recording may not be clean at re-record |
 | Account and plan area | Any browser lab where you open the account menu | Email address and plan tier |
 | Any pricing, usage or billing page | Anywhere you open the console | Pricing changes, and quoting it dates the video and risks a claim we should not make |

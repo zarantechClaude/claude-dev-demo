@@ -37,5 +37,4 @@ def select_messages(history, current_request, keep_recent=3):
 
 
 if __name__ == "__main__":
-    # decisions are the signal, and they sit OUTSIDE the last 3 messages.
     print(select_messages(HISTORY, CURRENT_REQUEST))

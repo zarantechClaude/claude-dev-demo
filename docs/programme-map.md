@@ -21,14 +21,23 @@ Hands-on lab time alone is about 4 hours.
 
 ## Video granularity
 
-No single video over 12 minutes. That means:
+No single video runs over 12 minutes.
+
+The authoritative per-video split is in each module's
+`02-facilitator/recording-script.md`, which was built against this cap and checked
+to add up. In summary:
 
 | Asset | Split into |
 |---|---|
-| Each 25-slide deck | 3 or 4 lectures |
+| Each deck | 4 lectures |
+| Ex1, Ex2, Ex4, Ex10, Ex14 (12 min) | 1 video each, at the cap with no headroom |
+| Ex3, Ex7, Ex8, Ex9 (15 min) | 2 videos each |
+| Ex12, Ex13 (18 min) | 2 videos each |
 | Ex5, Ex6, Ex11 (20 to 22 min) | 2 videos each |
 | Ex15 (35 min) | 3 videos: scaffold the service, integrate the API, tests and docs |
-| Everything else | 1 video |
+
+An earlier version of this table said "everything else, 1 video", which was wrong
+for five exercises that exceed twelve minutes.
 
 Add a section-map slide to the front of each deck. In a recorded course learners
 navigate by section rather than by the trainer's voice, so each module needs a
@@ -44,7 +53,7 @@ did not exist in the vendor pack and was authored in-house.
 | 1 | 1 | Explore Claude's interface and explain sample code | 12 min | Browser | `running_average.py` |
 | 2 | 1 | Structure a developer prompt | 12 min | Browser | none, prompt only |
 | 3 | 1 | Code review checklist | 15 min | Browser | `order_sync.py` |
-| 4 | 2 | Create a project brief for Claude Code | 12 min | Claude Code | none, authored live |
+| 4 | 2 | Create a project context file for Claude Code | 12 min | Claude Code | none, authored live |
 | 5 | 2 | Build, refactor and review a registration endpoint | 20 min | Claude Code | `messy_registration.py` |
 | 6 | 2 | Improve existing code with documentation and tests | 22 min | Claude Code, pytest | `undocumented_utils.py` |
 | 7 | 3 | Debug a buggy code sample | 15 min | pytest | `buggy_inventory.py`, `test_buggy_inventory.py` |
@@ -74,8 +83,11 @@ still do Exercise 12. Without it, Exercise 12 hard-depends on Exercise 11's outp
 
 Two softer linkages worth preserving:
 
-1. Exercise 6 produces a test suite. Module 3 opens by running it and watching it
-   fail, which is why Exercise 6 sits at the end of Module 2 rather than in Module 3.
+1. Exercise 6 produces a test suite, which is why it sits at the end of Module 2
+   rather than in Module 3. Note that the suite a learner leaves is **green**, with
+   any parked bug marked `xfail`, so Module 3 cannot simply open by running it and
+   watching it fail. The recording script opens by running it green, reading the
+   parked `xfail` line aloud, removing the marker on camera, and re-running red.
 2. Exercise 15 **is** the capstone, not a separate lab that precedes it. Running
    Exercise 15 as a lab and then setting a capstone duplicates the same work.
 

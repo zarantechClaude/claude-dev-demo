@@ -28,9 +28,9 @@ def test_empty_code_is_rejected(client):
 
 def test_valid_request_returns_summary(client):
     with patch.object(summariser, "summarise_code", return_value={"summary": "stub"}):
-        # TODO (learner): app.py imported summarise_code directly, so patching
-        # the module attribute is not enough. Work out why this test fails and
-        # fix either the import style or the patch target. This is deliberate.
+        # TODO (learner): this test fails as shipped, deliberately.
+        # Work out why. One of the other tests in this file patches the same
+        # function successfully. Compare the two and the reason will be clear.
         resp = client.post("/summarize", json={"code": "def f(): pass"})
         assert resp.status_code == 200
         assert "summary" in resp.get_json()

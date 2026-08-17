@@ -1,4 +1,4 @@
-# Module 4, Block 1: run this BEFORE any teaching.
+# Exercise 10 pre-flight check. Run this before anything else in Module 4.
 # Confirms the key loads and one call succeeds. Prints a specific diagnosis.
 #   pip install anthropic python-dotenv
 #   python verify_key.py

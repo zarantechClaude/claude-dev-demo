@@ -1,4 +1,4 @@
-# Module 4, Lab B target state.
+# Exercise 11 reference implementation, the target state for the lab.
 # Argument input, structured template, tagged user input, three error paths.
 #   python cli_reference.py "explain what a WSGI server does"
 #

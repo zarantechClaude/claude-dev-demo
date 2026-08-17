@@ -1,4 +1,5 @@
-# TEACHING ARTEFACT - test file for Lab A. Do not change the tests.
+# TEACHING ARTEFACT - test suite for Exercise 7. Do not change the tests.
+# They are the specification. If a test looks wrong, read it again.
 import pytest
 from buggy_inventory import restock, reorder_quantity
 

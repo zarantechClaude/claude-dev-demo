@@ -54,13 +54,14 @@ traces, isolating root causes, generating ranked debugging hypotheses, evaluatin
 alternative fixes, spotting performance bottlenecks, improving algorithmic complexity,
 Claude as a pull request partner, security review, and structuring review output.
 
-Two deck corrections the labs handle explicitly:
+Two deck corrections, **both now applied** in `../01-deck/revised/` and recorded in
+`../01-deck/deck-changelog.md`:
 
-1. The deck slide on nested loops describes the growth as exponential. It is quadratic.
-   Exercise 8 names the difference and says why it matters in a review. Fix the slide in
-   the revised deck and record the change in `deck-changelog.md`.
-2. The deck suggests an approved emoji as a review sign-off format. Exercise 9 uses named
-   severity groups instead. No emoji in learner-facing material.
+1. The vendor slide on nested loops described the growth as exponential. It is
+   quadratic. Corrected on revised slide 13. Exercise 8 demonstrates the difference,
+   so the deck and the lab now agree.
+2. The vendor slide suggested an approved emoji as a review sign-off. Corrected on
+   revised slide 23 to a verdict in words. Exercise 9 uses named severity groups.
 
 ## Conventions for anyone editing these labs
 

@@ -88,7 +88,10 @@ stale and needs the voice pass described in `docs/course-context.md`.
 - Python 3.11 or later. Python only across the whole programme. Node and Java
   branches were removed deliberately, to keep learner setup to one runtime.
 - `ANTHROPIC_API_KEY` is the environment variable name everywhere. The official
-  SDK reads it by default, which removes a line of code from Exercise 10.
+  SDK reads it from the environment by default. The lab scripts still read it
+  explicitly and pass it in, so that a missing key produces our diagnostic message
+  rather than an SDK stack trace. Do not claim on camera that the code relies on
+  the SDK default, because it does not.
 - The model id is read from a `MODEL` environment variable and every script fails
   with a clear message if it is unset. No script hardcodes a model id.
 - Lab snippets must be readable in under 60 seconds. If reading takes longer, the
