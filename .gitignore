@@ -1,0 +1,22 @@
+# Secrets. Never commit a key, not even a throwaway recording key.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Generated artefacts. lab.md is the source of truth, lab.docx is built from it.
+# Uncomment the next line if you decide to stop tracking the generated DOCX.
+# **/lab.docx

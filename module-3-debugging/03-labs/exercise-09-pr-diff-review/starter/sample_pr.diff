@@ -1,0 +1,67 @@
+# TEACHING ARTEFACT - DO NOT FIX
+# Exercise 9, Module 3. Intended duration: 15 minutes.
+# A pull request diff submitted for review. Review it as you would at work.
+# Trainer reference, not for learners: docs/lab-defect-register.md
+
+diff --git a/api/search.py b/api/search.py
+index 3f2a1b8..9c4e7d2 100644
+--- a/api/search.py
++++ b/api/search.py
+@@ -1,10 +1,12 @@
+ import sqlite3
+-from flask import request, jsonify
++from flask import request,jsonify
+ 
+ DB = "app.db"
+ 
++PAGE_SIZE=25
++
+ def _conn():
+-    return sqlite3.connect(DB)
++    return sqlite3.connect( DB )
+ 
+ 
+ def search_orders():
+@@ -12,18 +14,26 @@ def search_orders():
+     Search orders by customer reference.
+     """
+     term = request.args.get("q")
+-    if not term:
+-        return jsonify({"error": "q is required"}), 400
+-
++    page = int(request.args.get("page", 1))
+     conn = _conn()
+     cur = conn.cursor()
+-    cur.execute(
+-        "SELECT id, ref, total FROM orders WHERE ref LIKE ? LIMIT 25",
+-        ("%" + term + "%",),
+-    )
++    offset = page * PAGE_SIZE
++    cur.execute(
++        "SELECT id, ref, total FROM orders WHERE ref LIKE '%" + term + "%' "
++        "LIMIT " + str(PAGE_SIZE) + " OFFSET " + str(offset)
++    )
+     rows = cur.fetchall()
+-    return jsonify([{"id": r[0], "ref": r[1], "total": r[2]} for r in rows])
++    out=[]
++    for r in rows:
++        out.append({ "id":r[0], "ref":r[1], "total":r[2] })
++    return jsonify(out)
++
++
++def order_total(rows):
++    t = 0
++    for r in rows :
++        t = t + r[2]
++    return t
+
+diff --git a/api/routes.py b/api/routes.py
+index a1b2c3d..d4e5f6a 100644
+--- a/api/routes.py
++++ b/api/routes.py
+@@ -4,5 +4,6 @@ from .search import search_orders
+ 
+ def register(app):
+     app.add_url_rule("/orders/search", "search_orders", search_orders)
++    app.config['MAX_CONTENT_LENGTH'] = None
+     return app
