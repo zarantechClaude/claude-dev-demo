@@ -29,7 +29,13 @@ if not key:
     print("  4. Are you running from the folder that contains .env?")
     sys.exit(1)
 
-print("Key loaded, length {}, starts with {}...".format(len(key), key[:7]))
+# Deliberately reports presence and length only. No part of the key value is
+# printed, not even a prefix, because this script runs on camera.
+print("Key loaded. Length {} characters.".format(len(key)))
+if key != key.strip():
+    print("WARNING: the key has leading or trailing whitespace. Remove it.")
+if key.startswith('"') or key.startswith("'"):
+    print("WARNING: the key is wrapped in quotes in .env. Remove them.")
 
 # Model is configuration, never hardcoded in course material: identifiers change.
 # Set MODEL in .env. Check the current model list in the Anthropic docs.
